@@ -125,17 +125,19 @@ inline const Symbol& getSymbol(char c) {
 MatrixPanel_I2S_DMA *dma_display = nullptr;
 
 const char* BASE_URL = "<API_BASE_URL>";
+const char* DEVICE_KEY = "<RANDOM_KEY>";
 const char* WIFI_SSID = "<WIFI_SSID>";
 const char* WIFI_PW = "<WIFI_PASSWORD>";
 const char* stopId1 = "<STOP_ID_1>";
 const char* stopId2 = "<STOP_ID_2>";
 
-String fetchMTA(char* urlSuffix, char* stopId) {
+String fetchMTA(const char* urlSuffix, const char* stopId) {
   if (WiFi.status() != WL_CONNECTED) return "";
 
   HTTPClient http;
   http.begin(String(BASE_URL) + "?urlSuffix=" + String(urlSuffix) + "&stopId=" + String(stopId));
   http.setTimeout(15000);
+  http.addHeader("x-device-key", DEVICE_KEY);
 
   int httpCode = http.GET();
   if (httpCode != HTTP_CODE_OK) {

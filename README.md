@@ -61,6 +61,7 @@ Edit these placeholders in the sketch:
 
 ```cpp
 const char* BASE_URL = "<API_BASE_URL>";
+const char* DEVICE_KEY = "<RANDOM_KEY>";
 const char* WIFI_SSID = "<WIFI_SSID>";
 const char* WIFI_PW = "<WIFI_PASSWORD>";
 const char* stopId1 = "<STOP_ID_1>";
